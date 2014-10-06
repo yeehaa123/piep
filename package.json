@@ -1,0 +1,10 @@
+{
+  "name": "piep",
+  "description": "an education package manager",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:piep/piep.git"
+  },
+  "author": "Bocoup"
+}
