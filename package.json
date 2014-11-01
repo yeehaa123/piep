@@ -6,5 +6,16 @@
     "type": "git",
     "url": "git@github.com:piep/piep.git"
   },
-  "author": "Bocoup"
+  "author": "Bocoup",
+  "dependencies": {
+    "bookshelf": "^0.7.9",
+    "checkit": "^0.2.0-pre",
+    "endpoints-controller": "^0.3.0",
+    "endpoints-model": "^0.1.2",
+    "endpoints-router": "^0.2.1",
+    "express": "^4.10.1",
+    "express-routebuilder": "^1.0.0",
+    "knex": "^0.7.3",
+    "sqlite3": "^3.0.2"
+  }
 }
