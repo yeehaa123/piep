@@ -1,9 +1,5 @@
-const fs = require('fs');
-const path = require('path');
 const express = require('express');
 const routeBuilder = require('express-routebuilder');
-
-const modules = fs.readdirSync(path.join(__dirname, 'modules'));
 
 var app = express();
 var namespace = "/api/0/"
@@ -13,14 +9,12 @@ app.use(function (req, res, next) {
   next();
 });
 
-var exercise_routes = require('./modules/exercises/routes');
-console.log(exercise_routes);
-var subapp = routeBuilder(express, exercise_routes);
-app.use(namespace, subapp);
+var modules = ["exercises", "objectives"];
 
-var objective_routes = require('./modules/objectives/routes');
-console.log(objective_routes);
-var subapp = routeBuilder(express, objective_routes);
-app.use(namespace, subapp);
+modules.forEach(function (module){
+  var routes = require('./modules/' + module + '/routes');
+  var subapp = routeBuilder(express, routes);
+  app.use(namespace, subapp);
+});
 
 module.exports = app;
