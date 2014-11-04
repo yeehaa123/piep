@@ -2,6 +2,9 @@ const BaseModel = require('../../classes/base_model');
 
 var instanceProps = {
   tableName: 'exercises',
+  objective: function() {
+    return this.belongsTo(require('../objectives/model'));
+  },
 };
 
 var classProps = {
@@ -11,6 +14,7 @@ var classProps = {
     'author_org',
     'title',
     'description',
+    'objective_id',
     'github_url',
     'keywords',
     'created'

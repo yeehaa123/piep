@@ -8,6 +8,7 @@ exports.up = function (knex) {
       t.text('author_org');
       t.text('title').notNullable();
       t.text('description');
+      t.integer('objective_id').references('id').inTable('objectives').notNullable();
       t.text('github_url').notNullable();
       t.text('keywords');
       t.timestamp('created').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));

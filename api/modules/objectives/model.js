@@ -2,6 +2,9 @@ const BaseModel = require('../../classes/base_model');
 
 var instanceProps = {
   tableName: 'objectives',
+  exercises: function(){
+    return this.hasMany(require('../exercises/model'));
+  },
 };
 
 var classProps = {
@@ -13,7 +16,7 @@ var classProps = {
     'keywords',
     'created'
   ],
-  dependents: []
+  dependents: ['exercises']
 };
 
 module.exports = BaseModel.extend(instanceProps, classProps);
