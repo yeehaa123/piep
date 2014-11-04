@@ -7,30 +7,30 @@ module.exports = BaseRouter.extend({
   controller: controller,
   routes: {
     get: {
-      '/exercises': [
+      '/resources': [
         controller.findMany,
         controller.serialize
       ],
-      '/exercises/:id': [
+      '/resources/:id': [
         controller.findById,
         controller.serialize
       ]
     },
     post: {
-      '/exercises':[
+      '/resources':[
         controller.create,
         controller.serialize
       ]
     },
     put: {
-      "/exercises/:id": [
+      "/resources/:id": [
         controller.findById,
         controller.update,
         controller.serialize
       ]
     },
     delete: {
-      '/exercises/:id': [
+      '/resources/:id': [
         controller.findById,
         controller.destroy,
         controller.serialize

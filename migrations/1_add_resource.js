@@ -2,7 +2,7 @@
 
 exports.up = function (knex) {
   return knex.schema.
-    createTable('exercises', function (t) {
+    createTable('resources', function (t) {
       t.increments('id');
       t.text('author').notNullable();
       t.text('author_org');
@@ -17,5 +17,5 @@ exports.up = function (knex) {
 
 exports.down = function (knex) {
   return knex.schema.
-    dropTableIfExists('exercises');
+    dropTableIfExists('resources');
 };

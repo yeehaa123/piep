@@ -9,7 +9,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-var modules = ["exercises", "objectives"];
+var modules = ["resources", "objectives"];
 
 modules.forEach(function (module){
   var routes = require('./modules/' + module + '/routes');

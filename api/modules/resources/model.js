@@ -1,7 +1,7 @@
 const BaseModel = require('../../classes/base_model');
 
 var instanceProps = {
-  tableName: 'exercises',
+  tableName: 'resources',
   objective: function() {
     return this.belongsTo(require('../objectives/model'));
   },
