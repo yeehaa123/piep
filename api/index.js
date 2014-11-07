@@ -4,6 +4,8 @@ const routeBuilder = require('express-routebuilder');
 var app = express();
 var namespace = "/api/0/"
 
+app.use(require('./middleware/cors'));
+
 app.use(function (req, res, next) {
   req.account = { isAdmin: function () { return true; } };
   next();
