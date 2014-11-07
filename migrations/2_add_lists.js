@@ -10,6 +10,7 @@ exports.up = function(knex, Promise) {
       t.text('name').notNullable();
       t.text('description');
       t.text('version');
+      t.text('license');
       t.text('keywords');
       t.timestamp('created').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
     });
