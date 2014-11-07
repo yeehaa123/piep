@@ -11,7 +11,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-var modules = ["resources", "objectives"];
+var modules = ["resources", "objectives", "lists", "list-resources"];
 
 modules.forEach(function (module){
   var routes = require('./modules/' + module + '/routes');
