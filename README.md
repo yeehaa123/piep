@@ -1,4 +1,4 @@
-# piep
+# piep ![Travis build status](https://api.travis-ci.org/piep/piep.svg)
 ## an education package manager
 
 A [Bocoup](http://www.bocoup.com) project
