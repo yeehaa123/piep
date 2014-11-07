@@ -11,6 +11,8 @@ exports.up = function (knex) {
       t.integer('objective_id').references('id').inTable('objectives').notNullable();
       t.text('github_url').notNullable();
       t.text('keywords');
+      t.text('version').notNullable();
+      t.text('license');
       t.timestamp('created').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
     });
 };

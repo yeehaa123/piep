@@ -8,6 +8,7 @@ exports.up = function (knex) {
       t.text('author_org');
       t.text('content').notNullable();
       t.text('keywords');
+      t.text('version').notNullable();
       t.timestamp('created').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
     });
 };
