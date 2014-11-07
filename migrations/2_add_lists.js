@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
       t.specificType('collaborators', 'text[]');
       t.text('name').notNullable();
       t.text('description');
-      t.text('version');
+      t.text('version').notNullable();
       t.text('license');
       t.text('keywords');
       t.timestamp('created').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
