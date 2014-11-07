@@ -17,8 +17,11 @@
     "endpoints-model": "^0.1.2",
     "endpoints-router": "^0.2.1",
     "express": "^4.10.1",
+    "express-bearer-token": "^2.0.0",
     "express-routebuilder": "^1.0.0",
+    "express-session": "^1.9.1",
     "knex": "^0.7.3",
+    "octonode": "^0.6.9",
     "sqlite3": "^3.0.2"
   },
   "devDependencies": {
