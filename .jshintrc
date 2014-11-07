@@ -20,7 +20,7 @@
   "maxdepth"      : 2,
   "maxstatements" : 15,
   "maxcomplexity" : 6,
-  "maxlen"        : 100,
+  "maxlen"        : 120,
 
   "asi"           : false,
   "boss"          : false,

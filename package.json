@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git@github.com:piep/piep.git"
   },
+  "scripts": {
+    "test": "grunt"
+  },
   "author": "Bocoup",
   "dependencies": {
     "bookshelf": "^0.7.9",
