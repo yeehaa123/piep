@@ -1,0 +1,9 @@
+---
+# get the development server in shape
+
+- name: ensure vagrant can sudo without a password
+  lineinfile: "dest=/etc/sudoers line='vagrant ALL=(ALL) NOPASSWD:ALL' state=present"
+
+- name: ensure knex is installed globally
+  npm: name=knex global=yes
+

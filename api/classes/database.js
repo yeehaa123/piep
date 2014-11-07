@@ -1,5 +1,6 @@
 const config = require('../../knexfile');
-const envConfig = config.development;
+const env = process.env.NODE_ENV;
+const envConfig = env === 'staging' ? config.staging : config.development;
 
 console.log('Connecting to '+ envConfig.client + ' at ' + envConfig.connection.filename + '...');
 

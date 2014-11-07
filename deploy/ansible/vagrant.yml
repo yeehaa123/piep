@@ -1,0 +1,16 @@
+---
+# deploy vagrant machine for development
+
+- hosts: vagrant
+  remote_user: vagrant
+  sudo: yes
+  roles:
+    - base
+    - configure
+    - development
+    - postgresql
+    - nginx
+    - services
+    - startup
+  handlers:
+    - include: handlers/handlers.yml

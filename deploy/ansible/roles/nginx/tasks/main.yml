@@ -1,0 +1,6 @@
+---
+# configure nginx
+
+- name: make sure nginx has a configuration file for api
+  template: src=api.conf dest=/etc/nginx/conf.d/api.conf backup=no
+  notify: restart nginx

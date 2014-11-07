@@ -28,12 +28,12 @@ exports.seed = function(knex, Promise) {
       return knex('list_resources').insert([
         {
           notes: 'Comes before the thing after it.',
-          piep_id: 0,
-          list_id: 0
+          piep_id: 1,
+          list_id: 1
         },
         {
           piep_id: 1,
-          list_id: 0
+          list_id: 1
         },
         {
           notes: 'Some notes.',
@@ -41,7 +41,7 @@ exports.seed = function(knex, Promise) {
           list_id: 2
         },
         {
-          piep_id: 0,
+          piep_id: 1,
           list_id: 1
         },
         {
