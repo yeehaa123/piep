@@ -1,8 +1,9 @@
 const config = require('../../knexfile');
+const envConfig = config.development;
 
-console.log('Connecting to '+ config.development.client + ' at ' + config.development.connection.filename + '...');
+console.log('Connecting to '+ envConfig.client + ' at ' + envConfig.connection.filename + '...');
 
-const knex = require('knex')(config.development);
+const knex = require('knex')(envConfig);
 const bookshelf = require('bookshelf')(knex);
 
 console.log('Running migrations...');
