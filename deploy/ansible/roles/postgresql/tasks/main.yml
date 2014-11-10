@@ -1,0 +1,16 @@
+---
+# configure postgresql
+
+- name: get postgresql version
+  shell: ls -r /etc/postgresql | head -1
+  register: postgresql_version
+
+- name: make sure postgresql is configured
+  template: "src=pg_hba.conf dest=/etc/postgresql/{{postgresql_version.stdout}}/main/pg_hba.conf mode=0644"
+  notify: restart postgresql
+
+- meta: flush_handlers
+
+- name: set PGUSER to postgres for all bash sessions
+  template: "src=pguser.sh dest=/etc/profile.d/pguser.sh"
+  notify: restart postgresql

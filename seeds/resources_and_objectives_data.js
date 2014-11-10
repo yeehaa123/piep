@@ -29,7 +29,7 @@ exports.seed = function(knex, Promise) {
           title: 'Basic Angular filtering directive',
           license: 'MIT',
           version: '5.0.0',
-          objective_id: 0,
+          objective_id: 1,
           github_url: 'https://github.com/tbranyen/angular-directive.git'
         },
         {

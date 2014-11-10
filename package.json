@@ -7,7 +7,9 @@
     "url": "git@github.com:piep/piep.git"
   },
   "scripts": {
-    "test": "grunt"
+    "test": "grunt",
+    "configure-hosts-local": "hostile set 127.0.0.1 piep.loc",
+    "configure-hosts-vm": "hostile set 192.168.33.46 piep.loc"
   },
   "author": "Bocoup",
   "dependencies": {
@@ -27,6 +29,8 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.10.0",
-    "load-grunt-tasks": "^1.0.0"
+    "load-grunt-tasks": "^1.0.0",
+    "pg": "^3.6.2",
+    "hostile": "^1.0.0"
   }
 }
