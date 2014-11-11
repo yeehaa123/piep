@@ -1,0 +1,9 @@
+---
+# reset staging database to most recent backup
+
+- hosts: staging
+  remote_user: ubuntu
+  sudo: yes
+  tasks:
+    - name: reset staging database to most recent backup
+      command: "{{bin_path}}/reset-database"
