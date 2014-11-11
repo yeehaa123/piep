@@ -1,10 +1,12 @@
+var path = require('path');
+
 module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
       filename: "./db/dev.sqlite"
     },
-    directory: './migrations',
+    directory: path.resolve(__dirname, '../migrations'),
     migrations: {
       tableName: 'migrations'
     }
@@ -17,9 +19,9 @@ module.exports = {
       user: 'postgres',
       database: 'piep'
     },
-    directory: __dirname+'/../migrations',
+    directory: path.resolve(__dirname, '../migrations'),
     migrations: {
-      tableName: 'knex_version'
+      tableName: 'migrations'
     }
   }
 };
