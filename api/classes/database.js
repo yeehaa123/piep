@@ -8,6 +8,6 @@ const knex = require('knex')(envConfig);
 const bookshelf = require('bookshelf')(knex);
 
 console.log('Running migrations...');
-knex.migrate.latest(config);
+knex.migrate.latest(envConfig);
 
 module.exports = bookshelf;
