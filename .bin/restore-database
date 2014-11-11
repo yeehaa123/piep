@@ -1,0 +1,82 @@
+#!/usr/bin/env node
+
+const spawn = require('child_process').spawn;
+
+const moment = require('moment');
+const chalk = require('chalk');
+
+const s3 = require('./lib/s3');
+const databaseName = require('../config/db').connection.database;
+
+console.log(chalk.green('restoring database'));
+
+var checkForDatabase = spawn('psql', ['-U', 'postgres', '--list']);
+
+checkForDatabase.stdout.on('data', function (data) {
+  var exists = data.toString().split('\n').some(function (line) {
+    return line.substring(1, databaseName.length+1) === databaseName;
+  });
+  if (exists) {
+    console.log(chalk.red('aborted: '+databaseName+' database already exists'));
+    console.log(chalk.red('try `npm run destroy-database` to drop it'));
+    process.exit();
+  }
+});
+
+checkForDatabase.on('close', function () {
+  console.log('searching for latest backup');
+  s3.list({
+    // search for backups from the last month only. this lets us find
+    // the most recent backup without iterating the entire bucket.
+    // has the extremely slim possibility of failing to find a backup
+    // if this is run on the 1st of a month before any backups have
+    // been made.
+    prefix: 'backup/'+moment().format('YYYYMM')
+  }, function(err, res) {
+    var dumpFile;
+    if (err) {
+      console.log(chalk.red('unable to list files in s3'));
+      throw err;
+    }
+    if (res.Contents.length === 0) {
+      console.log(chalk.red('unable to locate a backup in s3.'));
+      process.exit(1);
+    }
+    // keys are returned in alphabetical order. the last item is the newest.
+    dumpFile = res.Contents.pop().Key;
+
+    console.log('found', dumpFile);
+    console.log('streaming from s3');
+    s3.get(dumpFile).on('response', function (dump) {
+      var restore = spawn('pg_restore', [
+        '-U', 'postgres',
+        '-C',
+        '-d', 'template1'
+      ]);
+      restore.on('error', function (restoreErr) {
+        if (restoreErr) {
+          console.log(chalk.red('restore failed'));
+          throw restoreErr;
+        }
+      });
+      restore.stdin.on('error', function (err) {
+        console.log(chalk.red('invalid restore data'));
+        throw err;
+      });
+      restore.stderr.on('data', function (data) {
+        console.log(data.toString());
+      });
+      dump.pipe(restore.stdin);
+      restore.on('exit', function (code, signal) {
+        if (code !== 0) {
+          console.log(chalk.red('restore failed'), code);
+          process.exit(code);
+        } else {
+          console.log(chalk.green('restore complete'));
+        }
+      });
+    }).end();
+
+  });
+
+});

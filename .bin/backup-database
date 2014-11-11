@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+const spawn = require('child_process').spawn;
+
+const chalk = require('chalk');
+const moment = require('moment');
+const streamToS3 = require('knox-mpu');
+
+const s3 = require('./lib/s3');
+const config = require('../config/db').connection;
+const backupFile = 'backup/'+moment().format('YYYYMMDDHHmmss')+'.dump';
+
+if (require('os').hostname() !== 'piep') {
+  console.log(chalk.red('cannot backup from non-production machines, yet'));
+  // todo: support per-user backups
+  process.exit(1);
+}
+
+console.log(chalk.green('backing up database'));
+
+var dump = spawn('pg_dump', [
+  '-U', 'postgres',
+  '-h', config.host,
+  '-Fc',
+  config.database
+]);
+
+console.log('streaming to s3');
+
+dump.stderr.on('data', function (error) {
+  console.log(chalk.red('data dump failed'));
+  console.log(error.toString());
+  process.exit(1);
+});
+
+new streamToS3({
+  client: s3,
+  objectName: backupFile,
+  stream: dump.stdout
+}, function(err, data) {
+  if (err) {
+    throw err;
+  }
+  console.log(chalk.green('backup complete ('+backupFile+').'));
+});

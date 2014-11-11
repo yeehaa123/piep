@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+const exec = require('child_process').exec;
+const prompt = require('promptly');
+
+const databaseName = require('../config/db').connection.database;
+
+const chalk = require('chalk');
+
+console.log(chalk.green('dropping database "'+databaseName+'"'));
+
+prompt.confirm('are you sure you want to do this (y/n)?', function (err, val) {
+  if (!val) {
+    console.log(chalk.red('aborted'));
+  } else {
+    exec('dropdb -U postgres '+databaseName, function (err, stdout, stderr) {
+      if (err) {
+        console.log(chalk.red(stderr));
+        throw err;
+      }
+      console.log(chalk.green('done'));
+    });
+  }
+});

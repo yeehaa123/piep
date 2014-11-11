@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ $HOSTNAME == piep ]]; then
+  echo "Refusing to run this on the production server."
+else
+  sudo service api stop
+  dropdb -U postgres piep
+  `dirname "$0"`/restore-database
+  sudo service api start
+fi

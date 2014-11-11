@@ -14,7 +14,10 @@
     "deploy-staging": "ansible-playbook -i deploy/ansible/hosts deploy/ansible/deploy-staging.yml",
     "provision": "ansible-playbook -i deploy/ansible/hosts deploy/ansible/provision.yml",
     "vagrant-watch-log": "vagrant ssh -c 'tail -f /var/log/api'",
-    "vagrant-unwatch-log": "pgrep -f 'tail -f /var/log/api' | xargs kill"
+    "vagrant-unwatch-log": "pgrep -f 'tail -f /var/log/api' | xargs kill",
+    "restore-database": "./.bin/restore-database",
+    "backup-database": "./.bin/backup-database",
+    "destroy-database": "./.bin/destroy-database"
   },
   "author": "Bocoup",
   "dependencies": {
