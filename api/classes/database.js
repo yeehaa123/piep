@@ -1,4 +1,4 @@
-const config = require('../../knexfile');
+const config = require('../../config/db');
 const env = process.env.NODE_ENV;
 const envConfig = env === 'staging' ? config.staging : config.development;
 

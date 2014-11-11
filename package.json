@@ -9,7 +9,10 @@
   "scripts": {
     "test": "grunt",
     "configure-hosts-local": "hostile set 127.0.0.1 piep.loc",
-    "configure-hosts-vm": "hostile set 192.168.33.46 piep.loc"
+    "configure-hosts-vm": "hostile set 192.168.33.46 piep.loc",
+    "deploy": "ansible-playbook -i deploy/ansible/hosts deploy/ansible/deploy.yml",
+    "deploy-staging": "ansible-playbook -i deploy/ansible/hosts deploy/ansible/deploy-staging.yml",
+    "provision": "ansible-playbook -i deploy/ansible/hosts deploy/ansible/provision.yml"
   },
   "author": "Bocoup",
   "dependencies": {

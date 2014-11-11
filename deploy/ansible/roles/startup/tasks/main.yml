@@ -22,16 +22,6 @@
 - name: create database
   postgresql_db: name=piep
 
-- name: run db migrations
-  command: chdir=/vagrant knex migrate:latest
-  environment:
-    NODE_ENV: "{{env}}"
-
-- name: run db seeds
-  command: chdir=/vagrant knex seed:run
-  environment:
-    NODE_ENV: "{{env}}"
-
 - name: make sure api log file exists
   file: path={{api_log_file}} state=touch mode=0666 owner=www-data group=www-data
 
