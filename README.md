@@ -34,6 +34,8 @@ SQLite3. It is recommended that you use the Vagrant development environment.
 
 - Run `vagrant up` to start up the virtual machine
 
+  *NOTE: If you run into an error running `vagrant up`, you should pen Virtual Box, remove all VMs and associated files, and then run `sudo "/Library/Application Support/VirtualBox/LaunchDaemons/VirtualBoxStartup.sh" restart` to restart Virtual Box.*
+
 - Lastly, run `sudo npm run configure-hosts-vm`
 
 That's all!
