@@ -118,5 +118,5 @@ If you're developing locally, it's running from root of this repository. If you'
 
 - [Ashley Williams](http://twitter.com/ag_dubs)
 - [Tyler Kellen](http://twitter.com/tkellen)
-- [Leo Balter](http://twitter.com/leobalter)
+- [James Smith](https://twitter.com/jmeaspls)
 - [Isaac Durazo](http://twitter.com/isaacdurazo)
