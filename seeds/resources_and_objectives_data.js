@@ -30,14 +30,14 @@ exports.seed = function(knex, Promise) {
           license: 'MIT',
           version: '5.0.0',
           objective_id: 1,
-          github_url: 'https://github.com/tbranyen/angular-directive.git'
+          url: 'https://github.com/tbranyen/angular-directive.git'
         },
         {
           author: 'Sue',
           version: '10.3.0',
           title: 'Making a circle with 2.js',
           objective_id: 2,
-          github_url: 'https://github.com/deathbearbrown/2js-circle.git'
+          url: 'https://github.com/deathbearbrown/2js-circle.git'
         }
       ]);
     });

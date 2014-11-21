@@ -11,7 +11,7 @@ exports.up = function (knex) {
       t.integer('objective_id').references('id').inTable('objectives').notNullable();
       t.integer('estimated_min_duration');
       t.integer('estimated_max_duration');
-      t.text('github_url').notNullable();
+      t.text('url').notNullable();
       t.text('keywords');
       t.text('version').notNullable();
       t.text('license');

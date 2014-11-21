@@ -17,7 +17,7 @@ var classProps = {
     'objective_id',
     'estimated_min_duration',
     'estimated_max_duration',
-    'github_url',
+    'url',
     'keywords',
     'created'
   ],
