@@ -14,6 +14,7 @@ var classProps = {
     'author_org',
     'content',
     'keywords',
+    'version',
     'created'
   ],
   dependents: ['resources']

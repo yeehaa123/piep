@@ -17,6 +17,8 @@ var classProps = {
     'objective_id',
     'github_url',
     'keywords',
+    'version',
+    'license',
     'created'
   ],
   dependents: []

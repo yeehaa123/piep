@@ -17,6 +17,7 @@ var classProps = {
     'description',
     'resources',
     'version',
+    'license',
     'keywords'
   ],
   dependents: ['list_resources']
