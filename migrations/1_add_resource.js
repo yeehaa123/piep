@@ -9,6 +9,8 @@ exports.up = function (knex) {
       t.text('title').notNullable();
       t.text('description');
       t.integer('objective_id').references('id').inTable('objectives').notNullable();
+      t.integer('estimated_min_duration');
+      t.integer('estimated_max_duration');
       t.text('github_url').notNullable();
       t.text('keywords');
       t.text('version').notNullable();
