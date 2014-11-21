@@ -11,6 +11,8 @@ exports.up = function(knex, Promise) {
       t.text('description');
       t.text('version').notNullable();
       t.text('license');
+      t.text('image_url');
+      t.text('asset_urls');
       t.text('keywords');
       t.timestamp('created').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
     });

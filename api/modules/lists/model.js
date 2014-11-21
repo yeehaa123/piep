@@ -16,6 +16,8 @@ var classProps = {
     'name',
     'description',
     'resources',
+    'image_url',
+    'asset_urls',
     'version',
     'keywords'
   ],
